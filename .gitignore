@@ -102,3 +102,4 @@ ENV/
 
 #Scraped
 scraped/
+/scraped/
