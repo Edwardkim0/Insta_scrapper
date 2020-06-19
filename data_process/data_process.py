@@ -35,7 +35,7 @@ plt.rcParams['font.family'] = 'AppleGothic'
 class InstaTagData():
     def __init__(self, file_path=None, tag='망원동', dir_path='/Users/dhkim/PycharmProjects/instagramScraper/scraped'
                                                            '/hashtag/'):
-        print(f'{tag} data process start! \n')
+        print(f'{tag} data process start!')
         self.tag = tag
         self.dir_path = dir_path
         self.records = []
@@ -56,6 +56,7 @@ class InstaTagData():
                 self.records.append(json.loads(line))
         self.df = pd.DataFrame.from_records(self.records)
         self.df = self.df.drop_duplicates()
+        print(f'{self.tag} total {self.df.shape[0]}s data is collected.\n')
 
     def preprocess(self):
         self.df['time'] = self.df['taken_at_timestamp'].map(lambda x: dt.datetime.fromtimestamp(x).strftime('%Y-%m-%d '
